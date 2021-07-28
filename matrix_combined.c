@@ -3,9 +3,9 @@
 
 void mat_read(int x,int y,int[x][y]);
 void mat_display(int x, int y,int[x][y]);
-void mat_diagonal(int x,int y,int[x][y]);
-void mat_lower(int x,int y,int[x][y]);
-void mat_upper(int x,int y,int[x][y]);
+int mat_diagonal(int x,int y,int[x][y]);
+int mat_lower(int x,int y,int[x][y]);
+int mat_upper(int x,int y,int[x][y]);
 
 int i,j,m,n;
 
@@ -33,13 +33,16 @@ void main()
     mat_display(m,n,a);
     
     printf("\nDiagonal elements of matrix: \n");
-    mat_diagonal(m,n,a);
+    int dsum = mat_diagonal(m,n,a);
+    printf("\n   --> Sum of diagonal elements: %d\n",dsum);
     
     printf("\nLower half of matrix: \n");
-    mat_lower(m,n,a);
+    int lsum = mat_lower(m,n,a);
+    printf("\n   --> Sum of lower half elements: %d\n",lsum);
     
     printf("\nUpper half of matrix: \n");
-    mat_upper(m,n,a);
+    int usum = mat_upper(m,n,a);
+    printf("\n   --> Sum of upper half elements: %d\n",usum);
 }
 
 void mat_read(int x,int y,int mat[x][y])
@@ -71,8 +74,10 @@ void mat_display(int x,int y,int mat[x][y])
     }
 }
 
-void mat_diagonal(int x,int y,int mat[x][y])
+int mat_diagonal(int x,int y,int mat[x][y])
 {
+    int d=0;
+    
     printf("\n");
     
     for(i=0;i<x;i++)
@@ -81,17 +86,24 @@ void mat_diagonal(int x,int y,int mat[x][y])
         for(j=0;j<y;j++)
         {
             if(i==j)
+            {
                 printf("%d  ",mat[i][j]);
+                d += mat[i][j]; 
+            }
             
             else
                 printf("   ");
         }
         printf("\n");
     }
+    
+    return d;
 }
 
-void mat_lower(int x,int y,int mat[x][y])
+int mat_lower(int x,int y,int mat[x][y])
 {
+    int l=0;
+    
     printf("\n");
     
     for(i=0;i<x;i++)
@@ -100,17 +112,24 @@ void mat_lower(int x,int y,int mat[x][y])
         for(j=0;j<y;j++)
         {
             if(i>=j)
+            {
                 printf("%d  ",mat[i][j]);
+                l += mat[i][j];
+            }
             
             else
                 printf("   ");
         }
         printf("\n");
     }
+    
+    return l;
 }
 
-void mat_upper(int x,int y,int mat[x][y])
+int mat_upper(int x,int y,int mat[x][y])
 {
+    int u=0;
+    
     printf("\n");
     
     for(i=0;i<x;i++)
@@ -119,11 +138,16 @@ void mat_upper(int x,int y,int mat[x][y])
         for(j=0;j<y;j++)
         {
             if(i<=j)
+            {
                 printf("%d  ",mat[i][j]);
+                u += mat[i][j];
+            }
             
             else
                 printf("   ");
         }
         printf("\n");
     }
+    
+    return u;
 }
