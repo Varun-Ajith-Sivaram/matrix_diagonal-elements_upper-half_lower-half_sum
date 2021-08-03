@@ -16,8 +16,6 @@ void main()
     printf("\n Enter the no. of rows & columns (order) of the matrix: \n");
     scanf("%d %d",&m,&n);
     
-    int a[m][n];
-    
     if(m!=n)
     {
         printf("\n   --> Inputted matrices are not square\n");
@@ -25,6 +23,8 @@ void main()
 
         exit(1); 
     }
+    
+    int a[m][n];
     
     printf("\n   Enter the elements of the matrix: \n");
     mat_read(m,n,a);
