@@ -18,7 +18,7 @@ void main()
     
     if(m!=n)
     {
-        printf("\n   --> Inputted matrices are not square\n");
+        printf("\n   --> Inputted matrix is not square\n");
         printf("\n   --> Exited the program\n");
 
         exit(1); 
